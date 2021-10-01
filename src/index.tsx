@@ -3,10 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { RecoilRoot } from 'recoil';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <RecoilRoot>
+        <App />
+      </RecoilRoot>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
