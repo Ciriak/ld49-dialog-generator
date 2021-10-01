@@ -143,7 +143,7 @@ function App() {
     <div className="App">
       <Navbar bg="light" expand="lg">
         <Container>
-          <Navbar.Brand href="#home">LD49 Dialog editor</Navbar.Brand>
+          <Navbar.Brand href="#home">LD49 Dialogs editor</Navbar.Brand>
         </Container>
       </Navbar>
       <Container className="mt-2">
