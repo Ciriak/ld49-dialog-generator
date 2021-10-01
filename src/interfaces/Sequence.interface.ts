@@ -8,5 +8,5 @@ export default interface ISequence {
 
 export interface ISequenceItem {
   type: 'choice' | 'dialog';
-  item: IDialog | IChoice;
+  data: IDialog | IChoice;
 }

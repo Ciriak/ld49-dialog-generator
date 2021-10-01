@@ -17,7 +17,7 @@ export default function DialogPortrait(props: IDialogPortraitProps) {
   const size = props.size;
   return (
     <div className="dialog-portrait-container">
-      {characters[dialog.characterIndex].portraitFile && (
+      {characters[dialog.characterIndex]?.portraitFile && (
         <div
           className="character-portrait"
           style={{
