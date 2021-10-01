@@ -2,12 +2,11 @@ import { mdiFileSearch, mdiPlus } from '@mdi/js';
 import Icon from '@mdi/react';
 import { cloneDeep } from 'lodash';
 import React, { useState } from 'react';
-import { Accordion, ListGroup, Button, Row, InputGroup, Col, Badge, ListGroupItem } from 'react-bootstrap';
+import { ListGroup, Button, Row, InputGroup, Col, ListGroupItem } from 'react-bootstrap';
 import faker from 'faker';
-import { useHistory, useParams } from 'react-router';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router';
+
 import useLibrary from '../../hooks/useLibrary';
-import SequenceItemListGroup from '../SequenceItemListGroup/SequenceItemListGroup';
 
 import './sequences-list.scss';
 import ISequence from '../../interfaces/Sequence.interface';

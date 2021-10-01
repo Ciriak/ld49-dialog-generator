@@ -11,7 +11,7 @@ import IDialog from '../../interfaces/Dialog.interface';
 import { toast } from 'react-toastify';
 import SequenceItemListGroup from '../SequenceItemListGroup/SequenceItemListGroup';
 import Icon from '@mdi/react';
-import { mdiChat, mdiChatQuestion } from '@mdi/js';
+import { mdiChat } from '@mdi/js';
 import IChoice from '../../interfaces/Choice.interface';
 
 export default function Sequence() {
