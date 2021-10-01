@@ -23,7 +23,7 @@ export default function DialogPreview(props: IDialogPreviewProps) {
     <div className="dialog-preview">
       <h5>Preview</h5>
       <div className="preview-container">
-        <DialogPortrait dialog={dialog} size={100} />
+        <DialogPortrait dialog={dialog} size={100} disabled={dialog.disablePortrait} />
         <div className={classNames('character-dialog', { scared: dialog.isScared })}>
           <span className="asterix letter">*</span>
           <div className="dialog-text">

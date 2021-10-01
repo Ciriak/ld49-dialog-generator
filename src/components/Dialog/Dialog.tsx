@@ -62,7 +62,7 @@ export default function Dialog() {
           voice.load();
         }
 
-        if (!dialog.noSound) {
+        if (!dialog.disableSound) {
           voice.play();
         }
       }
@@ -160,9 +160,23 @@ export default function Dialog() {
                 <Row className="text-left">
                   <input
                     type="checkbox"
-                    checked={dialog.noSound}
+                    checked={dialog.disableSound}
                     onChange={() => {
-                      setDialog({ ...dialog, noSound: !dialog.noSound });
+                      setDialog({ ...dialog, disableSound: !dialog.disableSound });
+                    }}
+                  />
+                </Row>
+              </Form.Group>
+            </Col>
+            <Col>
+              <Form.Group className="mb-3">
+                <Form.Label>Disable portrait</Form.Label>
+                <Row className="text-left">
+                  <input
+                    type="checkbox"
+                    checked={dialog.disablePortrait}
+                    onChange={() => {
+                      setDialog({ ...dialog, disablePortrait: !dialog.disablePortrait });
                     }}
                   />
                 </Row>

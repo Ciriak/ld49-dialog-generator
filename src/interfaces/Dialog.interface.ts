@@ -15,7 +15,12 @@ export default interface IDialog {
   /**
    * If true, no voice sound will be played
    */
-  noSound?: boolean;
+  disableSound?: boolean;
+
+  /**
+   * If true, no portrait will be shown
+   */
+  disablePortrait?: boolean;
   /**
    * An in game script to run when the dialog start
    */

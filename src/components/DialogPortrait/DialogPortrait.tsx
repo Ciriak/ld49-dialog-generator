@@ -5,6 +5,7 @@ import './dialog-portrait.scss';
 interface IDialogPortraitProps {
   dialog: IDialog;
   size: number;
+  disabled?: boolean;
 }
 
 export default function DialogPortrait(props: IDialogPortraitProps) {
@@ -20,6 +21,7 @@ export default function DialogPortrait(props: IDialogPortraitProps) {
         <div
           className="character-portrait"
           style={{
+            opacity: props.disabled ? '0' : '1',
             width: size + 'px',
             height: size + 'px',
             backgroundImage: `url('${characters[dialog.characterIndex].portraitFile}')`,
