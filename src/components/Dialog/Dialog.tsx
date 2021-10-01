@@ -62,7 +62,9 @@ export default function Dialog() {
           voice.load();
         }
 
-        voice.play();
+        if (!dialog.noSound) {
+          voice.play();
+        }
       }
 
       setTimeout(() => {
@@ -147,6 +149,34 @@ export default function Dialog() {
                     checked={dialog.isScared}
                     onChange={() => {
                       setDialog({ ...dialog, isScared: !dialog.isScared });
+                    }}
+                  />
+                </Row>
+              </Form.Group>
+            </Col>
+            <Col>
+              <Form.Group className="mb-3">
+                <Form.Label>Disable sound</Form.Label>
+                <Row className="text-left">
+                  <input
+                    type="checkbox"
+                    checked={dialog.noSound}
+                    onChange={() => {
+                      setDialog({ ...dialog, noSound: !dialog.noSound });
+                    }}
+                  />
+                </Row>
+              </Form.Group>
+            </Col>
+            <Col>
+              <Form.Group className="mb-3">
+                <Form.Label>Auto skip</Form.Label>
+                <Row className="text-left">
+                  <input
+                    type="checkbox"
+                    checked={dialog.autoSkip}
+                    onChange={() => {
+                      setDialog({ ...dialog, autoSkip: !dialog.autoSkip });
                     }}
                   />
                 </Row>

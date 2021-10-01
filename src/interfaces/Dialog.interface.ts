@@ -11,6 +11,11 @@ export default interface IDialog {
    * Goes to the next step without any player interaction
    */
   autoSkip?: boolean;
+
+  /**
+   * If true, no voice sound will be played
+   */
+  noSound?: boolean;
   /**
    * An in game script to run when the dialog start
    */
