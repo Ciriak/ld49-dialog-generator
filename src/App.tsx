@@ -4,7 +4,7 @@ import './App.scss';
 import { Col, Container, Navbar, Row } from 'react-bootstrap';
 import SequencesList from './components/SequencesList/SequencesList';
 import { Route, Switch } from 'react-router';
-import Dialog from './components/Dialog/Dialog';
+import Item from './components/Item/Item';
 import Sequence from './components/Sequence/Sequence';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -25,7 +25,7 @@ function App() {
           <Col>
             <Switch>
               <Route path="/sequence/:sequenceName/item/:itemIndex" key={Date.now()}>
-                <Dialog />
+                <Item />
               </Route>
               <Route path="/sequence/:sequenceName" key={Date.now()}>
                 <Sequence />

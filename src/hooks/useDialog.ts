@@ -5,10 +5,10 @@ import useLibrary from './useLibrary';
 function useDialog(sequenceName: string, dialogIndex: number) {
   const { library, setLibrary } = useLibrary();
   const sequenceIndex = findIndex(library.sequences, { internalName: sequenceName });
-  const dialog = library.sequences[sequenceIndex].items[dialogIndex].item as IDialog;
+  const dialog = library.sequences[sequenceIndex].items[dialogIndex].data as IDialog;
   function setDialog(updatedDialog: IDialog) {
     const updatedLibrary = cloneDeep(library);
-    updatedLibrary.sequences[sequenceIndex].items[dialogIndex].item = updatedDialog;
+    updatedLibrary.sequences[sequenceIndex].items[dialogIndex].data = updatedDialog;
 
     setLibrary(updatedLibrary);
   }

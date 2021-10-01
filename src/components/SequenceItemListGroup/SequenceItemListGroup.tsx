@@ -36,7 +36,7 @@ function ItemOptions(props: ISequenceItemListGroupProps) {
   }
 
   return (
-    <>
+    <div className="item-options">
       <Link to={`/sequence/${sequence.internalName}/item/${props.itemIndex}`} key={props.itemIndex}>
         <Button size="sm" variant="link">
           <Icon path={mdiPencil} size={0.8} />
@@ -52,7 +52,7 @@ function ItemOptions(props: ISequenceItemListGroupProps) {
       >
         <Icon path={mdiDelete} size={0.8} />
       </Button>
-    </>
+    </div>
   );
 }
 export default function SequenceItemListGroup(props: ISequenceItemListGroupProps) {
@@ -61,17 +61,17 @@ export default function SequenceItemListGroup(props: ISequenceItemListGroupProps
     <>
       {item.type === 'dialog' && (
         <ListGroup.Item className="d-flex align-items-center">
-          <DialogPortrait size={24} dialog={item.item as IDialog} />
-          <span className="item-text">{(item.item as IDialog).text}</span>
+          <DialogPortrait size={24} dialog={item.data as IDialog} />
+          <span className="item-text">{(item.data as IDialog).text}</span>
           {props.hasLink && <ItemOptions {...props} />}
         </ListGroup.Item>
       )}
       {item.type === 'choice' && (
         <ListGroup.Item className="d-flex align-items-center">
-          <DialogPortrait size={24} dialog={(item.item as IChoice).dialog} />
+          <DialogPortrait size={24} dialog={(item.data as IChoice).dialog} />
           <Icon path={mdiChatQuestion} size={1} />
           <span className="item-text">
-            {(item.item as IChoice).dialog.text} ({(item.item as IChoice).options.length})
+            {(item.data as IChoice).dialog.text} ({(item.data as IChoice).options.length})
           </span>
 
           {props.hasLink && <ItemOptions {...props} />}

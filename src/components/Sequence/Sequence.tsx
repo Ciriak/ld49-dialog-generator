@@ -23,7 +23,7 @@ export default function Sequence() {
   const [sequence, setSequence] = useState(lSequence);
 
   const SortableItem = SortableElement(({ item, itemIndex }: { item: ISequenceItem; itemIndex: number }) => {
-    return <SequenceItemListGroup item={item} itemIndex={itemIndex} sequenceIndex={sequenceIndex} hasDelete={true} />;
+    return <SequenceItemListGroup item={item} itemIndex={itemIndex} sequenceIndex={sequenceIndex} hasDelete={true} hasLink={true} />;
   });
 
   const SortableList = SortableContainer(({ items }: { items: ISequenceItem[] }) => {
@@ -39,7 +39,7 @@ export default function Sequence() {
   useEffect(() => {
     if (params.sequenceName !== sequence.internalName) {
       // eslint-disable-next-line no-restricted-globals
-      location.reload();
+      // location.reload();
     }
   });
 
@@ -52,8 +52,9 @@ export default function Sequence() {
 
   function handleSave() {
     lSetSequence({ ...sequence });
-    toast('Sequence saved', { type: 'success', position: 'bottom-right' });
-    history.push(`/sequence/${sequence.internalName}`);
+    history.push('/sequence/' + sequence.internalName);
+    // eslint-disable-next-line no-restricted-globals
+    location.reload();
   }
 
   function handleRemoveSequence() {
@@ -80,7 +81,7 @@ export default function Sequence() {
     if (type === 'dialog') {
       updatedSequence.items.push({
         type: 'dialog',
-        item: newDialog,
+        data: newDialog,
       });
     }
 
@@ -98,12 +99,13 @@ export default function Sequence() {
         ],
       };
       updatedSequence.items.push({
-        type: 'dialog',
-        item: newChoice,
+        type,
+        data: newChoice,
       });
     }
 
     setSequence(updatedSequence);
+    lSetSequence({ ...updatedSequence });
   }
 
   return (
@@ -144,7 +146,7 @@ export default function Sequence() {
           >
             <Icon path={mdiChat} size={0.8} />+
           </Button>
-          <Button
+          {/* <Button
             variant="primary"
             size="sm"
             title="Add a choice"
@@ -153,9 +155,9 @@ export default function Sequence() {
             }}
           >
             <Icon path={mdiChatQuestion} size={0.8} />+
-          </Button>
+          </Button> */}
           <div className="sequence-items-sortable-list">
-            <SortableList items={sequence.items} onSortEnd={handleSortEnd} />
+            <SortableList items={sequence.items} onSortEnd={handleSortEnd} distance={4} />
           </div>
         </Form.Group>
       </Row>

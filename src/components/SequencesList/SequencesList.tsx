@@ -2,18 +2,21 @@ import { mdiFileSearch, mdiPlus } from '@mdi/js';
 import Icon from '@mdi/react';
 import { cloneDeep } from 'lodash';
 import React, { useState } from 'react';
-import { Accordion, ListGroup, Button, Row, InputGroup, Col, Badge } from 'react-bootstrap';
+import { Accordion, ListGroup, Button, Row, InputGroup, Col, Badge, ListGroupItem } from 'react-bootstrap';
 import faker from 'faker';
+import { useHistory, useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import useLibrary from '../../hooks/useLibrary';
 import SequenceItemListGroup from '../SequenceItemListGroup/SequenceItemListGroup';
 
 import './sequences-list.scss';
+import ISequence from '../../interfaces/Sequence.interface';
 export default function SequencesList() {
   const { library, setLibrary } = useLibrary();
 
   const [filter, setFilter] = useState<string | null>(null);
 
+  const history = useHistory();
   function handleCreateSequence() {
     const updatedLibrary = cloneDeep(library);
 
@@ -24,6 +27,12 @@ export default function SequencesList() {
     });
 
     setLibrary(updatedLibrary);
+  }
+
+  function editSequence(sequence: ISequence) {
+    history.push(`/sequence/${sequence.internalName}`);
+    // eslint-disable-next-line no-restricted-globals
+    location.reload();
   }
 
   return (
@@ -53,39 +62,27 @@ export default function SequencesList() {
         </Col>
       </Row>
 
-      <Accordion>
-        {library.sequences.map((sequence, sequenceIndex) => {
-          return (
-            <Accordion.Item key={sequenceIndex} eventKey={String(sequenceIndex)}>
-              <Accordion.Header className="sequence-header">
-                <Col>{sequence.internalName} </Col>
-                <Badge>{sequence.items.length}</Badge>
-              </Accordion.Header>
-              <Accordion.Body>
-                <Row className="text-right">
-                  <Link to={`/sequence/${sequence.internalName}`}>
-                    <Button variant="link">Edit sequence infos</Button>
-                  </Link>
-                </Row>
-
-                <ListGroup>
-                  {sequence.items.map((sequenceItem, sequenceItemIndex) => {
-                    return (
-                      <SequenceItemListGroup
-                        key={sequenceItemIndex}
-                        item={sequenceItem}
-                        sequenceIndex={sequenceIndex}
-                        itemIndex={sequenceItemIndex}
-                        hasLink={true}
-                      />
-                    );
-                  })}
-                </ListGroup>
-              </Accordion.Body>
-            </Accordion.Item>
-          );
-        })}
-      </Accordion>
+      {library.sequences.map((sequence, sequenceIndex) => {
+        return (
+          <ListGroup>
+            <ListGroupItem>
+              <Col>
+                <span>
+                  {sequence.internalName} {'  '}
+                </span>
+                <Button
+                  variant="link"
+                  onClick={() => {
+                    editSequence(sequence);
+                  }}
+                >
+                  Edit
+                </Button>
+              </Col>
+            </ListGroupItem>
+          </ListGroup>
+        );
+      })}
     </div>
   );
 }

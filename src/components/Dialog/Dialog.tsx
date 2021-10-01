@@ -7,6 +7,7 @@ import { useParams } from 'react-router';
 import { dialogToLetters } from '../../utils/utils';
 import DialogPreview from '../DialogPreview/DialogPreview';
 import useDialog from '../../hooks/useDialog';
+import { Link } from 'react-router-dom';
 
 export default function Dialog() {
   const params = useParams<{ sequenceName: string; itemIndex: string }>();
@@ -72,6 +73,10 @@ export default function Dialog() {
 
   return (
     <div className="dialog">
+      <Row>
+        <Link to={`/sequence/` + params.sequenceName}>Return to Sequence</Link> <small>(Changes are saved instantly)</small>
+      </Row>
+
       <Row>
         <Form>
           <Row>
@@ -177,6 +182,10 @@ export default function Dialog() {
             />
             <small>
               To launch another sequence : <code>startSequence("seq_example")</code>
+            </small>
+            <br />
+            <small>
+              To set a flag : <code>setFlag("flagId", "value")</code>
             </small>
           </Form.Group>
 

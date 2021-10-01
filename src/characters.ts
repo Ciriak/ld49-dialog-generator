@@ -26,9 +26,19 @@ const characters: ICharacter[] = [
       src: ['/characters/lila/lila_voice.ogg'],
       html5: true,
       preload: false,
-      onload: () => {
-        console.log('oto');
-      },
+      onload: () => {},
+    }),
+  },
+  {
+    name: 'The Cat',
+    emotions: ['Smile', 'Neutral (no mouth)', 'Smile look right', 'Smile low eyes', 'Not smiling', 'Smiling 2', 'Smiling 3'],
+    portraitFile: '/characters/cat/cat-portrait.png',
+    voiceFile: '/characters/cat/cat_voice.ogg',
+    voice: new Howl({
+      src: ['/characters/lila/cat_voice.ogg'],
+      html5: true,
+      preload: false,
+      onload: () => {},
     }),
   },
 ];

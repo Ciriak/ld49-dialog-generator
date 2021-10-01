@@ -13,7 +13,7 @@ let library: ILibraryState = {
       items: [
         {
           type: 'dialog',
-          item: {
+          data: {
             characterIndex: 1,
             emotionIndex: 2,
             text: 'Hello world',
@@ -23,7 +23,7 @@ let library: ILibraryState = {
         },
         {
           type: 'dialog',
-          item: {
+          data: {
             characterIndex: 0,
             emotionIndex: 0,
             text: 'Text test 2',
@@ -32,7 +32,7 @@ let library: ILibraryState = {
         },
         {
           type: 'dialog',
-          item: {
+          data: {
             characterIndex: 1,
             emotionIndex: 1,
             text: 'Blablablabla',
@@ -45,6 +45,8 @@ let library: ILibraryState = {
 };
 if (rawSavedData) {
   library = JSON.parse(rawSavedData) as ILibraryState;
+  console.log('LOADED FILE');
+  console.log(library);
 }
 const libraryState = atom<ILibraryState>({
   key: 'library',
