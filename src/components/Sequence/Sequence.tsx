@@ -1,5 +1,5 @@
 import { cloneDeep, findIndex } from 'lodash';
-import react, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Col, Form, ListGroup, Row, Button } from 'react-bootstrap';
 import { useHistory, useParams } from 'react-router';
 import useLibrary from '../../hooks/useLibrary';

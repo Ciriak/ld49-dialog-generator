@@ -1,4 +1,3 @@
-import react from 'react';
 import IDialog from '../../interfaces/Dialog.interface';
 import characters from '../../characters';
 import './dialog-portrait.scss';

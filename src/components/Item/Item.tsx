@@ -1,5 +1,3 @@
-import react from 'react';
-
 import { useParams } from 'react-router';
 
 import { findIndex } from 'lodash';
