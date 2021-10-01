@@ -1,0 +1,64 @@
+@import '~bootswatch/dist/darkly/variables';
+@import '~bootstrap/scss/bootstrap';
+@import '~bootswatch/dist/darkly/bootswatch';
+
+.preview {
+  background-color: #000;
+  padding: 20px;
+  .preview-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    border: 4px #fff solid;
+    .character-portrait {
+      width: 100px;
+      height: 100px;
+      background-size: auto 100%;
+    }
+    .character-dialog {
+      flex: 1;
+      display: flex;
+      padding: 12px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 1.4rem;
+      font-weight: bold;
+      user-select: none;
+      min-height: 100px;
+      .asterix {
+        margin-right: 5px;
+      }
+      .dialog-text {
+        display: flex;
+      }
+
+      .letter {
+        min-width: 12px;
+        &.shake {
+          animation: shake 0.1s 1 steps(5, end);
+        }
+      }
+
+      &.scared {
+        .letter {
+          animation: shake 0.1s infinite steps(5, end);
+        }
+      }
+    }
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(-1px -1px);
+  }
+  20% {
+    transform: translateY(-1px);
+  }
+  30% {
+    transform: translate(1px 1px);
+  }
+  40% {
+    transform: translateY(1px);
+  }
+}
