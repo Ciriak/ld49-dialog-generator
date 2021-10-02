@@ -41,6 +41,18 @@ const characters: ICharacter[] = [
       onload: () => {},
     }),
   },
+  {
+    name: 'Dragon',
+    emotions: ['Empty', 'Neutral', 'Worried', 'Smile'],
+    portraitFile: '/characters/dragon/dragon-portrait.png',
+    voiceFile: '/characters/dragon/dragon_voice.ogg',
+    voice: new Howl({
+      src: ['/characters/dragon/dragon_voice.ogg'],
+      html5: true,
+      preload: false,
+      onload: () => {},
+    }),
+  },
 ];
 
 export default characters;
