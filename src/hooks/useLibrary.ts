@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
-import libraryState, { ILibraryState, library as defaultLibrary } from '../atoms/library.atom';
+import libraryState, { ILibraryState, defaultLibrary } from '../atoms/library.atom';
 
 function useLibrary() {
   const [library, ssetLibrary] = useRecoilState(libraryState);
@@ -8,8 +8,12 @@ function useLibrary() {
   useEffect(() => {
     if (document.location.href.indexOf('?reset=true') > -1) {
       console.log('CONFIG RESET');
-      setLibrary({ ...defaultLibrary });
-      document.location.href = '/';
+
+      //save in local storage
+      localStorage.setItem('library', JSON.stringify(defaultLibrary));
+      setTimeout(() => {
+        document.location.href = '/';
+      }, 500);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

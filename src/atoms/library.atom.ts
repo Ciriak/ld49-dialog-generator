@@ -6,7 +6,7 @@ export interface ILibraryState {
 }
 
 const rawSavedData = localStorage.getItem('library');
-export let library: ILibraryState = {
+export const defaultLibrary: ILibraryState = {
   sequences: [
     {
       internalName: 'seq_test',
@@ -43,6 +43,7 @@ export let library: ILibraryState = {
     },
   ],
 };
+let library: ILibraryState = { ...defaultLibrary };
 if (rawSavedData) {
   library = JSON.parse(rawSavedData) as ILibraryState;
   console.log('LOADED FILE');
