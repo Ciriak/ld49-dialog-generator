@@ -6,7 +6,7 @@ export interface ILibraryState {
 }
 
 const rawSavedData = localStorage.getItem('library');
-let library: ILibraryState = {
+export let library: ILibraryState = {
   sequences: [
     {
       internalName: 'seq_test',
@@ -50,9 +50,7 @@ if (rawSavedData) {
 }
 const libraryState = atom<ILibraryState>({
   key: 'library',
-  default: {
-    sequences: library?.sequences || [],
-  },
+  default: library,
 });
 
 export default libraryState;
